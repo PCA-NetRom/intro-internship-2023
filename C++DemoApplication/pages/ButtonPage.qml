@@ -7,6 +7,13 @@ import QtQuick.Controls
 
 ScrollablePage {
     id: page
+    property int counter: 0
+
+     function getEvenCount(){
+        if (counter%2 == 1)
+            return counter - 1
+        return counter
+    }
 
     Column {
         spacing: 40
@@ -28,6 +35,19 @@ ScrollablePage {
                 text: qsTr("First")
                 Layout.fillWidth: true
             }
+
+            Button {
+                text: qsTr("Click me!")
+                Layout.fillWidth: true
+                onClicked: {
+                            counter++
+                }
+            }
+
+            Label {
+                text: "Counter: " + getEvenCount()
+            }
+
             Button {
                 id: button
                 text: qsTr("Second")
